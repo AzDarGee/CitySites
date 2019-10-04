@@ -48,6 +48,8 @@ GEM
     airbrussh (1.3.4)
       sshkit (>= 1.6.1, != 1.7.0)
     ansi (1.5.0)
+    archive-zip (0.12.0)
+      io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
     bcrypt (3.1.13)
@@ -76,6 +78,17 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capybara (3.29.0)
+      addressable
+      mini_mime (>= 0.1.3)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (~> 1.5)
+      xpath (~> 3.2)
+    capybara-mechanize (1.11.0)
+      capybara (>= 2.4.4, < 4)
+      mechanize (~> 2.7.0)
     carrierwave (2.0.2)
       activemodel (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -83,16 +96,24 @@ GEM
       image_processing (~> 1.1)
       mimemagic (>= 0.3.0)
       mini_mime (>= 0.1.3)
+    childprocess (3.0.0)
     choice (0.2.0)
+    chromedriver-helper (2.1.1)
+      archive-zip (~> 0.10)
+      nokogiri (~> 1.8)
     chronic (0.10.2)
+    cliver (0.3.2)
     closure_tree (7.0.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
     cocoon (1.2.14)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     diff-lcs (1.3)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.5)
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
@@ -280,6 +301,9 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (3.6.0)
+    headless (2.3.1)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     httparty (0.17.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -288,6 +312,7 @@ GEM
     image_processing (1.9.3)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.13, < 3)
+    io-like (0.3.0)
     ipaddress (0.8.3)
     jaro_winkler (1.5.3)
     jquery-rails (4.3.5)
@@ -300,6 +325,21 @@ GEM
     json (1.8.6)
     jwt (2.2.1)
     kgio (2.11.2)
+    kimurai (1.4.0)
+      activesupport
+      capybara (>= 2.15, < 4.0)
+      capybara-mechanize
+      cliver
+      headless
+      murmurhash3
+      nokogiri
+      pmap
+      poltergeist
+      pry
+      rbcat (~> 0.2)
+      selenium-webdriver
+      thor
+      whenever
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.7.0)
@@ -315,6 +355,15 @@ GEM
       json (>= 1.7.7, < 2.0)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
+    mechanize (2.7.6)
+      domain_name (~> 0.5, >= 0.5.1)
+      http-cookie (~> 1.0)
+      mime-types (>= 1.17.2)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (>= 2.5.2)
+      nokogiri (~> 1.6)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (>= 0.0.9, < 0.2)
     method_source (0.9.2)
     mime-types (3.3)
       mime-types-data (~> 3.2015)
@@ -338,13 +387,18 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
+    murmurhash3 (0.1.6)
     mustermann (1.0.3)
+    net-http-digest_auth (1.4.1)
+    net-http-persistent (3.1.0)
+      connection_pool (~> 2.2)
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
     net-ssh (5.2.0)
     nio4r (2.5.2)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
+    ntlm-http (0.1.1)
     oauth (0.5.4)
     oauth2 (1.4.2)
       faraday (>= 0.8, < 2.0)
@@ -375,11 +429,19 @@ GEM
     parser (2.6.5.0)
       ast (~> 2.4.0)
     pg (1.1.4)
+    pmap (1.1.1)
+    poltergeist (1.18.1)
+      capybara (>= 2.1, < 4)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    pry-rails (0.3.9)
-      pry (>= 0.10.4)
+    pry-nav (0.3.0)
+      pry (>= 0.9.10, < 0.13.0)
+    pry-remote (0.1.8)
+      pry (~> 0.9)
+      slop (~> 3.0)
     public_suffix (4.0.1)
     puma (4.2.0)
       nio4r (~> 2.0)
@@ -430,6 +492,7 @@ GEM
     raindrops (0.19.0)
     rake (13.0.0)
     rb-readline (0.5.5)
+    rbcat (0.2.1)
     rbvmomi (2.2.0)
       builder (~> 3.0)
       json (>= 1.8)
@@ -439,6 +502,7 @@ GEM
     redis-namespace (1.6.0)
       redis (>= 3.0.4)
     ref (2.0.0)
+    regexp_parser (1.6.0)
     resque (2.0.0)
       mono_logger (~> 1.0)
       multi_json (~> 1.0)
@@ -480,6 +544,7 @@ GEM
     ruby-progressbar (1.10.1)
     ruby-vips (2.0.15)
       ffi (~> 1.9)
+    rubyzip (2.0.0)
     rufus-scheduler (3.6.0)
       fugit (~> 1.1, >= 1.1.6)
     sass-rails (6.0.0)
@@ -492,6 +557,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    selenium-webdriver (3.142.6)
+      childprocess (>= 0.5, < 4.0)
+      rubyzip (>= 1.2.2)
     shoulda-matchers (4.1.2)
       activesupport (>= 4.2.0)
     simple_command (0.1.0)
@@ -500,6 +568,7 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.7)
       tilt (~> 2.0)
+    slop (3.6.0)
     spring (2.1.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
@@ -526,12 +595,16 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.6)
     unicode-display_width (1.6.0)
     unicorn (5.5.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     vegas (0.1.11)
       rack (>= 1.0.0)
+    webrobots (0.1.2)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -541,6 +614,8 @@ GEM
       activerecord (>= 4.2)
     xml-simple (1.1.5)
     xmlrpc (0.3.0)
+    xpath (3.2.0)
+      nokogiri (~> 1.8)
 
 PLATFORMS
   ruby
@@ -556,6 +631,7 @@ DEPENDENCIES
   capistrano-resque
   capistrano-rvm
   carrierwave
+  chromedriver-helper
   closure_tree
   cocoon
   dotenv-rails
@@ -571,6 +647,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jwt
+  kimurai
   letter_opener
   mandrill-api
   mini_backtrace
@@ -582,7 +659,9 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-twitter
   pg
-  pry-rails
+  pry
+  pry-nav
+  pry-remote
   puma
   rabl
   rack-cors
@@ -597,6 +676,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   sass-rails
+  selenium-webdriver
   shoulda-matchers
   simple_command
   spring

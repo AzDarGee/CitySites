@@ -58,7 +58,9 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-resque', require: false
   gem 'rails-erd'
-  gem 'pry-rails'
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-nav'
   gem 'rb-readline'
   gem 'spring'
   gem 'letter_opener'
