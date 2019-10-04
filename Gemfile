@@ -17,6 +17,7 @@ gem 'figaro'
 gem 'whenever'
 gem 'resque', require: 'resque/server'
 gem 'mandrill-api'
+gem 'nokogiri'
 
 # model gems
 gem 'carrierwave'
@@ -56,7 +57,9 @@ group :development do
   gem 'capistrano-rvm', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-resque', require: false
+  gem 'rails-erd'
   gem 'pry-rails'
+  gem 'rb-readline'
   gem 'spring'
   gem 'letter_opener'
   gem 'dotenv-rails'
